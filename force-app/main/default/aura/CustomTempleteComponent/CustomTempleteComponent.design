@@ -1,0 +1,6 @@
+<design:component label="Employee CRUD app custom layout">
+    <flexipage:template>
+        <flexipage:region name="left_col" defaultWidth="Large" />
+        <flexipage:region name="right_col" defaultWidth="Large" />
+    </flexipage:template>
+</design:component>

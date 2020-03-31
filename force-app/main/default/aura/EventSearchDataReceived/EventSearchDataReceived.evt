@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="Event template">
+    <aura:attribute name="searchDataList" type="Employee__c[]"/>
+</aura:event>

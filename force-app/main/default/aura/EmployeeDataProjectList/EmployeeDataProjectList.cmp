@@ -1,0 +1,6 @@
+<aura:component implements="flexipage:availableForAllPageTypes, lightning:actionOverride">
+    <ltng:require styles="/resource/DefaultHeaderRemove" />
+    <div>
+        <c:EmployeeDataList aura:id="projectList" objectName="Project__c"/>
+    </div>
+</aura:component>	

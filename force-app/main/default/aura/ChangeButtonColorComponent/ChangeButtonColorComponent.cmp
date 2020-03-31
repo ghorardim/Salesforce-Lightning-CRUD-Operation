@@ -1,0 +1,4 @@
+<aura:component controller="EmployeeController" implements="flexipage:availableForRecordHome,flexipage:availableForAllPageTypes" access="global">
+    <ltng:require styles="/resource/soto" />
+    
+</aura:component>

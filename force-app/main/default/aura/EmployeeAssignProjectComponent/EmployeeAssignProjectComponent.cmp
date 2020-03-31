@@ -1,0 +1,29 @@
+<aura:component controller="EmployeeController" implements="flexipage:availableForAllPageTypes">
+    <ltng:require styles="/resource/bootstrap" />
+    <!-- attribute -->
+    <aura:attribute name="objectRecordId" type="String" />
+    <aura:attribute name="employeeList" type="Employee__c[]" />
+    <!-- handler -->
+    <aura:handler event="c:EmployeeDetailsDataEvent" action="{!c.handleAssignDetailsEvent}" />
+    <aura:if isTrue="{!not(empty(v.employeeList))}">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Assignee Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.employeeList}" var="con">
+                    <tr>
+                        <td>
+                            <lightning:button label="{!con.Name}" variant="base" name="{!con.Id}"
+                                onclick="{!c.showEmployeeDetails}" class="slds-m-left_x-large" />
+                        </td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+
+    </aura:if>
+</aura:component>

@@ -1,0 +1,35 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,lightning:hasPageReference" access="global"
+    controller="EmployeeController">
+    <ltng:require styles="/resource/bootstrap" />
+
+    <!-- navigation -->
+    <lightning:navigation aura:id="navId" />
+    <!-- attribute -->
+    <aura:attribute name="dataList" type="sObject[]" />
+    <aura:attribute name="objectName" type="String" />
+    <!-- handler -->
+    <aura:handler name="init" value="{!this}" action="{!c.showDataList}" />
+
+    <!-- body -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Project Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.dataList}" var="con">
+                <tr>
+                    <td>
+                        <lightning:button label="{!con.Name}" variant="base" name="{!con.Id}"
+                            onclick="{!c.showDataDetails}" class="slds-m-left_x-large" />
+                    </td>
+                    <td>
+                        <lightning:button variant="success" label="GoTo Record Page" name="{!con.Id}"
+                            onclick="{!c.gotoRecordPage}" />
+                    </td>
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table>
+</aura:component>

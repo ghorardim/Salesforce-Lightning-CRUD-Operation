@@ -1,0 +1,7 @@
+<aura:event type="APPLICATION" description="Event template">
+    <aura:attribute name="EmployeeRecord" type="Employee__c"/>
+</aura:event>
+
+<!-- <aura:event type="COMPONENT" description="Event template">
+    <aura:attribute name="EmployeeRecord" type="Employee__c"/>
+</aura:event> -->

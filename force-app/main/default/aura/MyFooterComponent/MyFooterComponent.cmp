@@ -1,0 +1,5 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+	<div >
+		<h3>© Copyright Abdullah Al Mahmud Jabir, Software Engineer, BJIT Limited</h3>
+	</div>
+</aura:component>

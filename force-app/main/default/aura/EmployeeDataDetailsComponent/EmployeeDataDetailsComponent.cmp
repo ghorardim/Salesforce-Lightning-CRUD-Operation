@@ -1,0 +1,8 @@
+<aura:component controller="EmployeeController" implements="flexipage:availableForAllPageTypes">
+    <ltng:require styles="/resource/bootstrap" />
+    <!-- attribute -->
+    <aura:attribute name="objectRecordId" type="String" />
+    <!-- handler -->
+    <aura:handler event="c:EmployeeDetailsDataEvent" action="{!c.handleDataDetailsEvent}" />
+    <lightning:recordForm recordId="{!v.objectRecordId}" objectApiName="Project__c" layoutType="Full" mode="view" />
+</aura:component>

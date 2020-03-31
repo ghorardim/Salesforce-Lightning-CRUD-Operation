@@ -1,0 +1,119 @@
+<aura:component controller="StudentTeacherDataController">
+
+    <!-- static resource -->
+    <!--  <ltng:require styles="/resource/bootstrap" /> -->
+
+    <!-- Attribute -->
+    <aura:attribute name="showDataType" type="string" default="teacher" />
+    <aura:attribute name="tableTitle" type="string" />
+    <aura:attribute name="tableHead" type="List" />
+    <aura:attribute name="tableData" type="List[]" />
+    <aura:attribute name="emptyTableData" type="String" />
+    <aura:attribute name="tableItemWidth" type="String" />
+
+    <div>
+
+        <!-- Button method call -->
+        <div class="slds-align_absolute-center" style="height:5rem">
+            <lightning:button name="student" variant="brand" label="Student" title="Base action"
+                onclick="{! c.handleDataTable }" />
+            <lightning:button class="ml-4" name="teacher" variant="brand" label="Teacher" title="Base action"
+                onclick="{! c.handleDataTable }" />
+            <lightning:button class="ml-4" name="admin" variant="brand" label="Admin" title="Base action"
+                onclick="{! c.handleDataTable }" />
+        </div>
+
+        <!-- Table body -->
+
+        <div class="TableBase">
+            <div class="RectangleHead">
+                <div class="Icon"></div>
+                <div class="TableTitle">{!v.tableTitle}</div>
+            </div>
+            <div class="TableArea">
+                <table class="table-1">
+                    <thead>
+                        <tr>
+                            <aura:iteration items="{!v.tableHead}" var="item">
+                                <th scope="col">
+                                    <div class="Item">
+                                        {!item}
+                                    </div>
+                                </th>
+                            </aura:iteration>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <aura:iteration items="{!v.tableData}" var="rowData">
+                            <tr>
+                                <aura:iteration items="{!rowData}" var="item" indexVar="index">
+                                    <td>
+                                        <aura:if isTrue="{!index == 0}">
+                                            <div class="Item">
+                                                {!item}
+                                            </div>
+                                            <aura:set attribute="else">
+                                                <div class="textBar">
+                                                </div>
+                                                <div class="Item">
+                                                    {!item}
+                                                </div>
+                                            </aura:set>
+                                        </aura:if>
+                                    </td>
+                                </aura:iteration>
+                            </tr>
+                        </aura:iteration>
+                    </tbody>
+                </table>
+                <h3>{!v.emptyTableData}</h3>
+            </div>
+        </div>
+        <!-- Table body  End -->
+
+        <div class="BlankArea"></div>
+
+        <!-- Table with div CSS Start-->
+
+        <div class="TableBase">
+            <div class="RectangleHead">
+                <div class="Icon"></div>
+                <div class="TableTitle">{!v.tableTitle}</div>
+            </div>
+            <div class="TableArea">
+                <!-- Table Head -->
+                <div class="TableHead">
+                    <aura:iteration items="{!v.tableHead}" var="item">
+                        <div class="Data">
+                            {!item}
+                        </div>
+                    </aura:iteration>
+                </div>
+                <!-- Table Body -->
+                <aura:iteration items="{!v.tableData}" var="rowData">
+                    <div class="TableBody">
+                        <aura:iteration items="{!rowData}" var="item" indexVar="index">
+                            <div class="SingleElement">
+                                <aura:if isTrue="{!index == 0}">
+                                    <div class="Data">
+                                        {!item}
+                                    </div>
+                                    <aura:set attribute="else">
+                                        <div class="dataBar"></div>
+                                        <div class="Data">
+                                            {!item}
+                                        </div>
+                                    </aura:set>
+                                </aura:if>
+                            </div>
+                        </aura:iteration>
+                    </div>
+                </aura:iteration>
+                <h3>{!v.emptyTableData}</h3>
+            </div>
+        </div>
+
+        <!-- Table with div CSS End -->
+
+    </div>
+</aura:component>

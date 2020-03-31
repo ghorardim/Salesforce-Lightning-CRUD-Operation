@@ -1,0 +1,8 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <ltng:require styles="/resource/DefaultHeaderRemove" />
+     <!-- handler -->
+     <aura:handler name="init" value="{!this}" action="{!c.getDepartmentName}" />
+    <div>
+        <c:EmployeeDepartmentList aura:id="departmentID" departmentName2="QA"/>
+    </div>
+</aura:component>	

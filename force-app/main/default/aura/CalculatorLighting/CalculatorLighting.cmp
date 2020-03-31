@@ -1,0 +1,19 @@
+<aura:component >
+    <aura:attribute name = "_TotalNumber" type="integer" access="public"/>
+    <aura:attribute name = "_Parcentage" type="integer" access="public"/>
+    <aura:attribute name = "input1" type="integer" access="public"/>
+
+    <!-- html start -->
+    
+    <div class="slds-p-around_x-large">
+        <lightning:input aura:id="inputNumber" type="number" name="input1" label="Enter a number" value="{!v._TotalNumber}"/>
+        <lightning:input type="number" name="v.input1" label="Percentage of number" 
+        value="{!v._Parcentage}" formatter="percent-fixed"/>  
+
+        The percentage of {!div(mult(v._TotalNumber,v._Parcentage),100)}
+
+        <lightning:button variant="base" label="Click Me" title="Success" onclick="{!c.handleClick}" class="slds-m-left_x-small"/>
+
+    </div>
+
+</aura:component>

@@ -1,0 +1,3 @@
+<aura:component implements="lightning:actionOverride,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader,flexipage:availableForAllPageTypes">
+    <lightning:button label="New Project" onclick="{!c.insertNewProject}"/>
+</aura:component>

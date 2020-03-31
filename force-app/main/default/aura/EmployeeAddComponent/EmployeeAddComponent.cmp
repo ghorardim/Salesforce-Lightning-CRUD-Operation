@@ -1,0 +1,39 @@
+<aura:component controller="EmployeeController" implements="force:hasRecordId,flexipage:availableForAllPageTypes">
+	<!-- attribute -->
+	<aura:attribute name="CreateEmployee" type="Employee__c" />
+	<aura:attribute name="searchEmployeeList" type="Employee__c[]" />
+	<aura:attribute name="searchKeyWord" type="String" />
+	<!-- handler -->
+	<aura:handler name="init" value="{!this}" action="{!c.clearPreviousEmployeeData}" />
+
+	<!-- event -->
+	<!-- <aura:registerEvent name="quickRefresh" type="c:EmployeeRefreshEvent" /> -->
+	<aura:registerEvent name="searchData" type="c:EventSearchDataReceived" />
+
+
+	<div>
+		<h1>Search Employee</h1>
+		<lightning:input aura:id="enter-search" name="Employee-Search" value="{!v.searchKeyWord}" type="search" onchange="{!c.doSearch}" />
+	</div>
+
+	<div class="slds-align_absolute-center">
+		<h1>Add new employee</h1>
+	</div>
+	<div class="slds-p-around_x-small">
+		<lightning:input type="text" label="Name" value="{!v.CreateEmployee.Name}" required="true" />
+		<lightning:input type="number" label="Phone Numner" value="{!v.CreateEmployee.Phone_Number__c}"
+			required="true" />
+		<lightning:input type="email" label="Email" value="{!v.CreateEmployee.Email__c}" />
+		<lightning:input type="phone" label="Salary " value="{!v.CreateEmployee.Salary__c}" required="true" />
+		<lightning:input type="text" label="Role" value="{!v.CreateEmployee.Role__c}" />
+		<lightning:input type="text" label="Address" value="{!v.CreateEmployee.Address__c}" />
+		<lightning:button label="Add Employee" variant="brand" onclick="{!c.addNewEmployee1}" />
+	</div>
+
+	<!-- System Event practice -->
+
+	<aura:attribute name="test" type="Integer"/>
+	<aura:handler name="change" value="{!v.test}" action="{!c.doChange}"/>
+	<lightning:button value="Change value" label="Change value" onclick="{!c.changeValue}"/>
+	<lightning:button value="Testing" label="Testing" onclick="{!c.TestFuncion}"/>
+</aura:component>

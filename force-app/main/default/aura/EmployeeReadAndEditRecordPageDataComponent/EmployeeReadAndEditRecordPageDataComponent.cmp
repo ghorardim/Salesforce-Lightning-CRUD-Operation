@@ -1,0 +1,62 @@
+<aura:component implements="force:appHostable,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <!-- Attribute -->
+    <aura:attribute name="dataRecord" type="Object" description="The record object to be displayed" />
+    <aura:attribute name="dataFields" type="Object" description="A simplified view record object to be displayed" />
+    <aura:attribute name="recordSaveError" type="String" description="An error message bound to force:recordData" />
+    <aura:attribute name="viewMode" type="String" default="EDIT" />
+    <aura:attribute name="isDisabled" type="Boolean" default="true" />
+
+    <!-- LDS -->
+
+    <force:recordData aura:id="record" layoutType="FULL" recordId="{!v.recordId}" targetError="{!v.recordSaveError}"
+        targetRecord="{!v.dataRecord}" targetFields="{!v.dataFields}" mode="{!v.viewMode}"
+        recordUpdated="{!c.recordUpdated}" />
+
+    <!-- Body -->
+    <div class="slds-box">
+        <div class="slds-text-heading_medium">
+            Load Data Service
+        </div>
+
+        <!-- Display a header with details about the record -->
+        <div class="slds-form--stacked slds-tile">
+            <div class="slds-form-element">
+                <label class="slds-form-element__label">Name: </label>
+                <div class="slds-form-element__control">
+                    <ui:inputText aura:id="dataFieldId_0" class="slds-input" value="{!v.dataFields.Name}"
+                        disabled="{!v.isDisabled}" />
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label">Technology: </label>
+                <div class="slds-form-element__control">
+                    <ui:inputText aura:id="dataFieldId_1" class="slds-input" value="{!v.dataFields.Technology__c}"
+                        disabled="{!v.isDisabled}" />
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label">Client Name: </label>
+                <div class="slds-form-element__control">
+                    <ui:inputText aura:id="dataFieldId_2" class="slds-input" value="{!v.dataFields.Contact__r.Name}"
+                        disabled="{!v.isDisabled}" />
+                </div>
+            </div>
+        </div>
+        <lightning:button variant="destructive" value="edit" label="Edit Data" onclick="{! c.editData }" />
+        <!-- Display the delete record form -->
+        <div class="Delete Record">
+            <lightning:card iconName="action:delete" title="Delete Record">
+                <div class="slds-p-horizontal--small">
+                    <lightning:button label="Delete Record" variant="destructive" onclick="{!c.handleDeleteRecord}" />
+                </div>
+            </lightning:card>
+        </div>
+        <aura:if isTrue="{!not(empty(v.recordSaveError))}">
+            <br />
+            <div class="error slds-box">
+                {!v.recordSaveError}
+            </div>
+        </aura:if>
+    </div>
+
+</aura:component>

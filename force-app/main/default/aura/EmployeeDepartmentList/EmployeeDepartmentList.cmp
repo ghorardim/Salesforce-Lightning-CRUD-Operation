@@ -1,0 +1,30 @@
+<aura:component controller="EmployeeController" >
+    <ltng:require styles="/resource/bootstrap" />
+    <!-- attribute -->
+    <aura:attribute name="employeeList" type="Employee__c[]" />
+    <aura:attribute name="departmentName2" type="String" /> 
+    <!-- method -->
+    <aura:method name="employeeDepartment" action="{!c.getDepartmentName}" access="public">
+        <aura:attribute name="departmentName" type="String" /> 
+    </aura:method>
+
+
+    <!-- body -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Employee Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.employeeList}" var="con">
+                <tr>
+                    <td>
+                        <lightning:button label="{!con.Name}" variant="base" name="{!con.Id}"
+                            onclick="{!c.showEmployeeDetails}" class="slds-m-left_x-large" />
+                    </td>
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table>
+</aura:component>	

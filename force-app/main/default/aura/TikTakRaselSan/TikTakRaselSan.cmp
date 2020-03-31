@@ -1,0 +1,46 @@
+<aura:component>
+    <!-- handler -->
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <!-- attribute -->
+    <aura:attribute name="count" type="string" default="0" />
+    <aura:attribute name="gameData" type="List[]" />
+    <aura:attribute name="isGameBoardVisiable" type="Boolean" default="false" />
+    <aura:attribute name="runTime" type="String" default="00" />
+
+
+
+    <!-- Component Body -->
+    <div>
+        <aura:if isTrue="{!v.isGameBoardVisiable}">
+            <div class="body">
+                <tr>
+                    <h1>{!v.runTime}</h1>
+                </tr>
+                <tr>
+                    <lightning:button aura:id="00" name="00" label="" onclick="{!c.handleClick}" class="ButtonCSS" />
+                    <lightning:button aura:id="01" name="01" label="" onclick="{!c.handleClick}" class="ButtonCSS" />
+                    <lightning:button aura:id="02" name="02" label="" onclick="{!c.handleClick}" class="ButtonCSS" />
+                </tr>
+                <tr>
+                    <lightning:button aura:id="10" name="10" label="" onclick="{!c.handleClick}" class="ButtonCSS" />
+                    <lightning:button aura:id="11" name="11" label="" onclick="{!c.handleClick}" class="ButtonCSS" />
+                    <lightning:button aura:id="12" name="12" label="" onclick="{!c.handleClick}" class="ButtonCSS" />
+                </tr>
+                <tr>
+                    <lightning:button aura:id="20" name="20" label="" onclick="{!c.handleClick}" class="ButtonCSS" />
+                    <lightning:button aura:id="21" name="21" label="" onclick="{!c.handleClick}" class="ButtonCSS" />
+                    <lightning:button aura:id="22" name="22" label="" onclick="{!c.handleClick}" class="ButtonCSS" />
+                </tr>
+                <tr>
+                    <lightning:button aura:id="resetButtonId" name="reset" label="Reset" onclick="{!c.resetButton}"
+                        class="ButtonReset" />
+                </tr>
+            </div>
+            <aura:set attribute="else">
+                <lightning:button aura:id="startGameBtnID" name="startGameBtn" label="Start Game"
+                    onclick="{!c.handleStartGame}" class="ButtonStart" />
+            </aura:set>
+        </aura:if>
+    </div>
+
+</aura:component>
