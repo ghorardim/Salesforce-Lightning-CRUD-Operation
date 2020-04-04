@@ -7,7 +7,7 @@
  <!-- <c:EmployeeQAListComponent/> -->
  <!-- <c:EmployeeDataProjectList /> -->
  <!-- <c:LightningEventsCompContainer /> -->
-  <!-- <c:TaskRaselVi/> -->
-  <c:TikTakRaselSan/>
+  <c:TaskRaselVi/>
+  <!-- <c:TikTakRaselSan/> -->
 
 </aura:application>

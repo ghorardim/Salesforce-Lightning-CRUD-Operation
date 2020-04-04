@@ -10,16 +10,20 @@
     <aura:attribute name="tableData" type="List[]" />
     <aura:attribute name="emptyTableData" type="String" />
     <aura:attribute name="tableItemWidth" type="String" />
+    <aura:attribute name="recordIDList" type="List[]" />
+
+    <!-- navigation -->
+    <lightning:navigation aura:id="navId" />
 
     <div>
 
         <!-- Button method call -->
         <div class="slds-align_absolute-center" style="height:5rem">
-            <lightning:button name="student" variant="brand" label="Student" title="Base action"
+            <lightning:button name="Student" variant="brand" label="Student" title="Base action"
                 onclick="{! c.handleDataTable }" />
-            <lightning:button class="ml-4" name="teacher" variant="brand" label="Teacher" title="Base action"
+            <lightning:button class="ml-4" name="Teacher" variant="brand" label="Teacher" title="Base action"
                 onclick="{! c.handleDataTable }" />
-            <lightning:button class="ml-4" name="admin" variant="brand" label="Admin" title="Base action"
+            <lightning:button class="ml-4" name="Admin" variant="brand" label="Admin" title="Base action"
                 onclick="{! c.handleDataTable }" />
         </div>
 
@@ -41,10 +45,15 @@
                                     </div>
                                 </th>
                             </aura:iteration>
+                            <th scope="col">
+                                <div class="Item">
+                                    View
+                                </div>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <aura:iteration items="{!v.tableData}" var="rowData">
+                        <aura:iteration items="{!v.tableData}" var="rowData" indexVar="idx">
                             <tr>
                                 <aura:iteration items="{!rowData}" var="item" indexVar="index">
                                     <td>
@@ -62,6 +71,14 @@
                                         </aura:if>
                                     </td>
                                 </aura:iteration>
+                                <td>
+                                    <div class="textBar">
+                                    </div>
+                                    <div class="Item">
+                                        <lightning:button variant="brand-outline" label="View Details" value="{!idx}"
+                                            title="Click to view details" onclick="{! c.handleClick }" />
+                                    </div>
+                                </td>
                             </tr>
                         </aura:iteration>
                     </tbody>
